@@ -6,6 +6,7 @@ source $DF_BASE_PATH/bash_colors.sh
 source $DF_BASE_PATH/bash_prompt.sh
 source $DF_BASE_PATH/editor.sh
 source $DF_BASE_PATH/git.sh
+source $DF_BASE_PATH/heroku.sh
 source $DF_BASE_PATH/rvm.sh
 
 # Seinfeld (see https://github.com/collectiveidea/seinfeld.sh)
