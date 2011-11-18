@@ -1,0 +1,3 @@
+[submodule "seinfeld.sh"]
+	path = seinfeld.sh
+	url = https://github.com/collectiveidea/seinfeld.sh.git
