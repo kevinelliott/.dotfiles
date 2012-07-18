@@ -1,0 +1,32 @@
+#!/bin/bash
+# usage: control (start|stop) service
+
+case "$2" in
+mysql)  echo "$1 MySQL"
+  launchctl "$1" homebrew.mxcl.mysql
+  ;;
+pg)  echo "$1 PostgreSQL"
+  launchctl "$1" homebrew.mxcl.postgresql
+  ;;
+nginx) echo "$1 nginx"
+  launchctl "$1" org.nginx
+  ;;
+mongo) echo "$1 mongodb"
+  launchctl "$1" org.mongodb.mongod
+  ;;
+redis) echo "$1 redis"
+  launchctl "$1" io.redis.redis-server
+  ;;
+memcached) echo "$1 memcached"
+  launchctl "$1" com.danga.memcached
+  ;;
+fs) echo "$1 MySQL, nginx, mongodb, redis, memcached"
+  launchctl "$1" com.mysql.mysqld
+  launchctl "$1" org.nginx
+  launchctl "$1" org.mongodb.mongod
+  launchctl "$1" io.redis.redis-server
+  launchctl "$1" com.danga.memcached
+  ;;
+*) echo "Service $2 not found"
+  ;;
+esac

@@ -13,18 +13,18 @@ function use_textmate () {
 }
 
 function use_sublime () {
-  alias sub='open -a "/Applications/Sublime Text 2.app"'
-  export EDITOR='open -a "/Applications/Sublime Text 2.app"'
-  export GEM_OPEN_EDITOR='open -a "/Applications/Sublime Text 2.app"'
+  export SUBL_PATH=`which subl`
+  export EDITOR="$SUBL_PATH -w"
+  export GEM_OPEN_EDITOR="$SUBL_PATH"
 
   function s {
     if [ "$1" != "" ]; then
-      sub $1
+      subl $1
     else
-      sub .
+      subl .
     fi
   }
 }
 
-use_textmate
+use_sublime
 
