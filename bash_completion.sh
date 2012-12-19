@@ -1,6 +1,12 @@
 # Set git autocompletion and PS1 integration
+# git autocompletion in git 1.7.x and below
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
+
+# git autocompletion in git 1.8.x
+if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
 fi
 
 GIT_PS1_SHOWDIRTYSTATE=true
