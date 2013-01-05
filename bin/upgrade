@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# upgrade
+#
+# Upgrades installed packages and pieces of the development environment.
+#
+
+# Die on failures
+set -e
+
+# Echo all commands
+# set -x
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
+
+script="`python -c 'import os,sys;print os.path.realpath(sys.argv[1])' "$0"`" #"`readlink -f "$0"`"
+dir="`dirname "$script"`"
+
+# Upgrade Homebrew
+if command_exists brew; then
+  echo "=== Upgrading Homebrew and updating its recipes..."
+  brew update
+  echo "=== Homebrew updated."
+fi
+brew -v
+
+# Upgrade ack
+if command_exists ack; then
+  echo "=== Installing ack..."
+  brew upgrade ack
+  echo "=== ack installed."
+fi
+
+
+# RVM
+if ! command_exists rvm; then
+  echo "=== Installing RVM..."
+  curl -L https://get.rvm.io | bash -s stable
+  echo "=== RVM installed."
+  source ~/.bash_profile
+fi
+rvm -v
