@@ -29,17 +29,16 @@ brew -v
 
 # Upgrade ack
 if command_exists ack; then
-  echo "=== Installing ack..."
+  echo "=== Upgrading ack..."
   brew upgrade ack
-  echo "=== ack installed."
+  echo "=== ack upgraded."
 fi
 
-
-# RVM
-if ! command_exists rvm; then
-  echo "=== Installing RVM..."
-  curl -L https://get.rvm.io | bash -s stable
-  echo "=== RVM installed."
-  source ~/.bash_profile
+# Powify/Pow
+if command_exists powify; then
+  echo "=== Upgrading powify and pow..."
+  gem update powify
+  powify server update
+  echo "=== powify and pow upgraded."
 fi
-rvm -v
+gem query --local |grep powify

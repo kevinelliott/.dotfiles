@@ -69,3 +69,10 @@ if ! command_exists rvm; then
   source ~/.bash_profile
 fi
 rvm -v
+
+# Powify
+if ! command_exists powify; then
+  echo "=== Installing powify..."
+  gem install powify
+fi
+gem query --local |grep powify
