@@ -41,6 +41,8 @@ dir="`dirname "$script"`"
 #rm -rf $HOME/Library/Application\ Support/Sublime\ Text\ 2
 #ln -s $dir/sublime-text-2 $HOME/Library/Application\ Support/Sublime\ Text\ 2
 
+# Git
+git config --global core.excludesfile ~/.dotfiles/etc/gitignore_global
 
 # Homebrew
 if ! command_exists brew; then
