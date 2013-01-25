@@ -2,6 +2,7 @@ export DF_BASE_PATH=~/.dotfiles
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
 
 source $DF_BASE_PATH/aliases.sh
+source $DF_BASE_PATH/autojump.sh
 source $DF_BASE_PATH/bash_colors.sh
 source $DF_BASE_PATH/bash_completion.sh
 source $DF_BASE_PATH/bash_path.sh

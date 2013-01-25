@@ -42,3 +42,11 @@ if command_exists powify; then
   echo "=== powify and pow upgraded."
 fi
 gem query --local |grep powify
+
+# autojump
+if command_exists autojump; then
+  echo "=== Upgrading autojump..."
+  brew upgrade autojump
+  echo "=== autojump upgraded."
+fi
+autojump -v

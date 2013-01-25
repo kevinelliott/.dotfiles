@@ -78,3 +78,9 @@ if ! command_exists powify; then
   gem install powify
 fi
 gem query --local |grep powify
+
+# autojump
+if ! command_exists autojump; then
+  echo "=== Installing autojump..."
+  brew install autojump
+fi
