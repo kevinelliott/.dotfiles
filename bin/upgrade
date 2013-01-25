@@ -50,3 +50,11 @@ if command_exists autojump; then
   echo "=== autojump upgraded."
 fi
 autojump -v
+
+# hub
+if command_exists hub; then
+  echo "=== Upgrading hub..."
+  brew upgrade hub
+  echo "=== hub upgraded."
+fi
+hub --version

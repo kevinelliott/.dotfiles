@@ -14,3 +14,13 @@ GIT_PS1_SHOWDIRTYSTATE=true
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
+
+# ack autocompletion
+if [ -f /usr/local/etc/bash_completion.d/ack.bash_completion.sh ]; then
+    . /usr/local/etc/bash_completion.d/ack.bash_completion.sh
+fi
+
+# hub autocompletion
+if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
+    . /usr/local/etc/bash_completion.d/hub.bash_completion.sh
+fi

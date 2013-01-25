@@ -83,4 +83,12 @@ gem query --local |grep powify
 if ! command_exists autojump; then
   echo "=== Installing autojump..."
   brew install autojump
+  echo "=== autojump installed."
+fi
+
+# hub
+if ! command_exists hub; then
+  echo "=== Installing hub..."
+  brew install hub
+  echo "=== hub installed."
 fi
