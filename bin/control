@@ -18,13 +18,6 @@ redis) echo "$1 redis"
   launchctl "$1" io.redis.redis-server
   ;;
 memcached) echo "$1 memcached"
-  launchctl "$1" com.danga.memcached
-  ;;
-fs) echo "$1 MySQL, nginx, mongodb, redis, memcached"
-  launchctl "$1" com.mysql.mysqld
-  launchctl "$1" org.nginx
-  launchctl "$1" org.mongodb.mongod
-  launchctl "$1" io.redis.redis-server
   launchctl "$1" homebrew.mxcl.memcached
   ;;
 *) echo "Service $2 not found"
