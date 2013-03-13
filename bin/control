@@ -25,7 +25,7 @@ fs) echo "$1 MySQL, nginx, mongodb, redis, memcached"
   launchctl "$1" org.nginx
   launchctl "$1" org.mongodb.mongod
   launchctl "$1" io.redis.redis-server
-  launchctl "$1" com.danga.memcached
+  launchctl "$1" homebrew.mxcl.memcached
   ;;
 *) echo "Service $2 not found"
   ;;
