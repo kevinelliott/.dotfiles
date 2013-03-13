@@ -58,3 +58,11 @@ if command_exists hub; then
   echo "=== hub upgraded."
 fi
 hub --version
+
+# memcached
+if command_exists memcached; then
+  echo "=== Upgrading memcached..."
+  brew upgrade memcached
+  echo "=== memcached upgraded."
+fi
+memcached -h | head -1

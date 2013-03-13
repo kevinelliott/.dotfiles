@@ -92,3 +92,10 @@ if ! command_exists hub; then
   brew install hub
   echo "=== hub installed."
 fi
+
+# memcached
+if ! command_exists memcached; then
+  echo "=== Installing memcached..."
+  brew install memcached
+  echo "=== memcached installed."
+fi
