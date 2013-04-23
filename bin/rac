@@ -1,0 +1,20 @@
+#!/bin/bash --login
+
+if [ $# -eq 0 ]; then
+  echo 'syntax: rac (new_app_name) [ruby-version] [gemset]'
+  exit 1
+fi
+
+APP_NAME=$1
+RUBY_VERSION='ruby-2.0.0'
+GEMSET=$APP_NAME
+
+echo "Creating new Rails application '$APP_NAME' using RailsAppComposer"
+
+
+mkdir $APP_NAME
+cd $APP_NAME
+rvm use $RUBY_VERSION@$GEMSET --ruby-version --create
+gem install rails
+gem install rails_apps_composer
+rails_apps_composer new . -r core
