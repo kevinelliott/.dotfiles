@@ -16,9 +16,10 @@ if [ -f /opt/local/etc/bash_completion ]; then
 fi
 
 # ack autocompletion
-if [ -f /usr/local/etc/bash_completion.d/ack.bash_completion.sh ]; then
-    . /usr/local/etc/bash_completion.d/ack.bash_completion.sh
-fi
+# TODO: This is broken! Fix.
+#if [ -f /usr/local/etc/bash_completion.d/ack.bash_completion.sh ]; then
+#    . /usr/local/etc/bash_completion.d/ack.bash_completion.sh
+#fi
 
 # hub autocompletion
 if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
