@@ -14,6 +14,3 @@ source $DF_BASE_PATH/heroku.sh
 source $DF_BASE_PATH/node.sh
 source $DF_BASE_PATH/rvm.sh
 source $DF_BASE_PATH/xquartz.sh
-
-# Seinfeld (see https://github.com/collectiveidea/seinfeld.sh)
-source ~/.dotfiles/seinfeld.sh/seinfeld.sh
