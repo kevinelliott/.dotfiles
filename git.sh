@@ -13,4 +13,5 @@ if [ -n `which git` ]; then
   alias gco='git checkout'
   alias gpatch='git diff master -p'
   alias gitrm="git status | grep deleted | awk '{print $3}' | xargs git rm"
+  alias grel="git push && git checkout master && git push && git push heroku master && git checkout develop"
 fi
