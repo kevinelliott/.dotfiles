@@ -40,3 +40,6 @@ Thumbs.db
 # Dropbox #
 ###########
 .dropbox
+
+# Client-specific
+BlueKai/**/.ruby-gemset

@@ -22,29 +22,27 @@ command_exists () {
 script="`python -c 'import os,sys;print os.path.realpath(sys.argv[1])' "$0"`" #"`readlink -f "$0"`"
 dir="`dirname "$script"`"
 
-# symlink dotfiles/folders
-#find "$dir" -maxdepth 1 | while read file; do
-#
-#  case "$file" in
-#    "$dir"|"$dir/.git"|"$dir/.gitignore"|"$dir/README.markdown"|*.swp|"$script")
-#      continue
-#      ;;
-#  esac
-#  
-#  name=".`basename $file`"
-#  rm -rf "$HOME/$name"
-#  ln -s "$file" "$HOME/$name"
-#done
 
-
+# TODO: Update for my usage
 # symlink Sublime Text files
 #rm -rf $HOME/Library/Application\ Support/Sublime\ Text\ 2
 #ln -s $dir/sublime-text-2 $HOME/Library/Application\ Support/Sublime\ Text\ 2
 
-# Git
-git config --global core.excludesfile ~/.dotfiles/etc/gitignore_global
+###########################################################
+# Homebrew Managed Software
+###########################################################
 
-# Homebrew
+function install_bottle { 
+  if ! command_exists $1; then
+    echo "=== Installing $1..."
+    brew install $1
+    echo "=== $1 installed."
+  else
+    echo "=== Skipping $1, already installed."
+  fi
+}
+
+# Install Homebrew itself
 if ! command_exists brew; then
   echo "=== Installing Homebrew..."
   ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
@@ -53,15 +51,20 @@ fi
 brew -v
 sudo chown -R $USER /usr/local/Cellar
 brew update
+echo "=== Updated homebrew bottles."
 
+# Define bottles to install
+bottles=(ack autojump hub memcached tmux)
 
-# ack
-if ! command_exists ack; then
-  echo "=== Installing ack..."
-  brew install ack
-  echo "=== ack installed."
-fi
+# Install all bottles
+for bottle in "${bottles[@]}"
+do
+  install_bottle $bottle
+done
 
+###########################################################
+# Ruby Software
+###########################################################
 
 # RVM
 if ! command_exists rvm; then
@@ -79,23 +82,32 @@ if ! command_exists powify; then
 fi
 gem query --local |grep powify
 
-# autojump
-if ! command_exists autojump; then
-  echo "=== Installing autojump..."
-  brew install autojump
-  echo "=== autojump installed."
-fi
 
-# hub
-if ! command_exists hub; then
-  echo "=== Installing hub..."
-  brew install hub
-  echo "=== hub installed."
-fi
+###########################################################
+# Configs
+###########################################################
 
-# memcached
-if ! command_exists memcached; then
-  echo "=== Installing memcached..."
-  brew install memcached
-  echo "=== memcached installed."
-fi
+# symlink dotfiles/folders
+#find "$dir" -maxdepth 1 | while read file; do
+#
+#  case "$file" in
+#    "$dir"|"$dir/.git"|"$dir/.gitignore"|"$dir/README.markdown"|*.swp|"$script")
+#      continue
+#      ;;
+#  esac
+#  
+#  name=".`basename $file`"
+#  rm -rf "$HOME/$name"
+#  ln -s "$file" "$HOME/$name"
+#done
+
+# git
+ln -s $dir/etc/gitignore_global ~/.gitignore
+echo "=== Linked $dir/etc/gitignore_global to ~/.gitignore"
+git config --global core.excludesfile ~/.gitignore
+echo "=== Configured git's global excludesfile to ~/.gitignore"
+
+# tmux - blatently ripped from https://raw.github.com/chrishunt/dot-files/master/.tmux.conf
+ln -s $dir/etc/tmux.conf_global ~/.tmux.conf
+echo "=== Linked $dir/etc/tmux.conf_global to ~/.tmux.conf"
+
