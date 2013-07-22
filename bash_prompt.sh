@@ -1,22 +1,21 @@
-#export PS1="\e[1;30m\][\e[\e[1;30m\]\e[1;33m\] \e[1;31m\]\T\[\e[0m\]\e[1;33m \[\e[1;32m\]\w\[\e[0m\] \e[1;30m\]] $ "
-#export PS1="\w$ "
-
-function __git_dirty {
-  git diff --quiet HEAD &>/dev/null 
-  [ $? == 1 ] && echo "!"
-}
-
-function __git_branch {
-  __git_ps1 " %s"
-}
-
-function __my_rvm_ruby_version {
+function __my_chruby_version {
   local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
   [ "$gemset" != "" ] && gemset="@$gemset"
-  local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
-  [ "$version" == "1.8.7" ] && version=""
+  local version=`ruby -v | awk '{print $2}'`
   local full="$version$gemset"
   [ "$full" != "" ] && echo "$full "
+}
+
+function __my_git_prompt {
+  GIT_PS1=""
+  if command -v git >/dev/null; then
+    [ -f "/usr/local/etc/bash_completion.d/git-prompt.sh" ] && . "/usr/local/etc/bash_completion.d/git-prompt.sh"
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1='$(__git_ps1 " (%s)")'
+  fi
+  echo "$GIT_PS1"
 }
 
 bash_prompt() {
@@ -55,7 +54,8 @@ bash_prompt() {
   local UC=$W                 # user's color
   [ $UID -eq "0" ] && UC=$R   # root's color
 
-  PS1="$C\$(__my_rvm_ruby_version)$EMY\w$EMW\$(__git_branch)$EMY\$(__git_dirty)${NONE} $ "
+  PS1="$C\$(__my_chruby_version)$EMY\w$EMW$(__my_git_prompt)${NONE} $ "
+  #PS1="[\W]\$ "
 }
 
 bash_prompt

@@ -1,4 +1,5 @@
 if [ -n `which git` ]; then
+  # Aliases
   alias gst='git status'
   alias gl='git pull'
   alias gp='git push'
