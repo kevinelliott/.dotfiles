@@ -15,7 +15,7 @@ mongo) echo "$1 mongodb"
   launchctl "$1" org.mongodb.mongod
   ;;
 redis) echo "$1 redis"
-  launchctl "$1" io.redis.redis-server
+  launchctl "$1" homebrew.mxcl.redis
   ;;
 memcached) echo "$1 memcached"
   launchctl "$1" homebrew.mxcl.memcached
