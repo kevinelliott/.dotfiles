@@ -1,5 +1,5 @@
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-rvm 2.0.0
+rvm 2.1.3
 echo "Using "`ruby -v`
 
 # chruby
