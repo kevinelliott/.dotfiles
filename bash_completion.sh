@@ -9,6 +9,16 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
 fi
 
+# git autocompletion in git 2.1.x
+if [ -f `brew --prefix git`/etc/bash_completion.d/git-completion.bash ]; then
+	. `brew --prefix git`/etc/bash_completion.d/git-completion.bash
+fi
+
+# git autocompletion in git 2.1.x
+if [ -f `brew --prefix git`/etc/bash_completion.d/git-prompt.sh ]; then
+	. `brew --prefix git`/etc/bash_completion.d/git-prompt.sh
+fi
+
 GIT_PS1_SHOWDIRTYSTATE=true
 
 if [ -f /opt/local/etc/bash_completion ]; then
