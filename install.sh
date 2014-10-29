@@ -87,19 +87,7 @@ gem query --local |grep powify
 # Configs
 ###########################################################
 
-# symlink dotfiles/folders
-#find "$dir" -maxdepth 1 | while read file; do
-#
-#  case "$file" in
-#    "$dir"|"$dir/.git"|"$dir/.gitignore"|"$dir/README.markdown"|*.swp|"$script")
-#      continue
-#      ;;
-#  esac
-#  
-#  name=".`basename $file`"
-#  rm -rf "$HOME/$name"
-#  ln -s "$file" "$HOME/$name"
-#done
+# TODO: Make this into a function
 
 # git
 ln -s $dir/etc/gitignore_global ~/.gitignore
@@ -110,4 +98,8 @@ echo "=== Configured git's global excludesfile to ~/.gitignore"
 # tmux - blatently ripped from https://raw.github.com/chrishunt/dot-files/master/.tmux.conf
 ln -s $dir/etc/tmux.conf_global ~/.tmux.conf
 echo "=== Linked $dir/etc/tmux.conf_global to ~/.tmux.conf"
+
+# gemrc
+ln -s $dir/etc/gemrc_global ~/.gemrc
+echo "=== Linked $dir/etc/gemrc_global to ~/.gemrc"
 
