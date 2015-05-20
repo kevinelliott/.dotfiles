@@ -4,7 +4,7 @@ APPS_PATH=~/work/WeLike
 
 rails_composer() {
 	APP_NAME=$1
-	RUBY_VERSION=2.1.3
+	RUBY_VERSION=2.2.1
 	APP_PATH=$APPS_PATH/$APP_NAME
 	COMPOSER_URL=https://raw.github.com/RailsApps/rails-composer/master/composer.rb
 

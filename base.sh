@@ -13,6 +13,7 @@ source $DF_BASE_PATH/control.sh
 source $DF_BASE_PATH/docker.sh
 source $DF_BASE_PATH/editor.sh
 source $DF_BASE_PATH/git.sh
+source $DF_BASE_PATH/go.sh
 source $DF_BASE_PATH/heroku.sh
 source $DF_BASE_PATH/node.sh
 source $DF_BASE_PATH/rails.sh
