@@ -1,3 +1,4 @@
 alias bk='cd ~/work/clients/BlueKai'
-alias sub='open -a "/Applications/Sublime Text 2.app"'
 alias powr='powify restart'
+
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
