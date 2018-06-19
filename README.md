@@ -1,3 +1,5 @@
+To support my open-source work, consider [adding me on Patreon](https://www.patreon.com/kevinelliott).
+
 # .dotfiles
 
 Dotfiles for your unix-like system. I've created this little repository to setup my OSX development machine. You're free to clone this
